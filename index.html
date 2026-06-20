@@ -1,169 +1,369 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課程精進意見調查數據分析報告</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: #2d3748;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f7fafc;
-        }
-        h1 {
-            color: #1a202c;
-            border-bottom: 3px solid #2b6cb0;
-            padding-bottom: 12px;
-            font-size: 26px;
-            text-align: center;
-        }
-        h2 {
-            color: #2b6cb0;
-            font-size: 20px;
-            margin-top: 35px;
-            border-left: 5px solid #2b6cb0;
-            padding-left: 10px;
-        }
-        .meta-info {
-            text-align: center;
-            color: #718096;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .card {
-            background: #ffffff;
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        th, td {
-            padding: 12px 18px;
-            text-align: left;
-            border-bottom: 1px solid #edf2f7;
-        }
-        th {
-            background-color: #2b6cb0;
-            color: #ffffff;
-            font-weight: 600;
-        }
-        tr:hover {
-            background-color: #f7fafc;
-        }
-        .stat-header {
-            font-weight: bold;
-            color: #2b6cb0;
-            background-color: #ebf8ff;
-        }
-        .badge {
-            background-color: #e2e8f0;
-            color: #4a5568;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1141 公行大一「行政統計學」課程精進意見調查（校方分析 by ChatGPT）</title>
+<style>
+  :root {
+    --fg:#1f2937;
+    --muted:#6b7280;
+    --line:#d1d5db;
+    --bg:#f9fafb;
+    --accent:#1d4ed8;
+    --soft:#eff6ff;
+    --warn:#fff7ed;
+  }
+  body {
+    font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    color: var(--fg);
+    margin: 0;
+    background: var(--bg);
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+    background: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: #111827;
+  }
+  h2 {
+    margin-top: 34px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    color: #111827;
+  }
+  h3 {
+    margin-top: 20px;
+    color:#111827;
+  }
+  h4 {
+    margin: 0 0 6px;
+    color:#111827;
+  }
+  .subtitle { color: var(--muted); margin-bottom: 20px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 12px;
+    margin: 18px 0 24px;
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    background: var(--soft);
+  }
+  .card-num {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .card-label {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0 18px;
+    font-size: 14px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    vertical-align: top;
+  }
+  th {
+    background: #f3f4f6;
+    text-align: left;
+  }
+  .wide td:nth-child(4), .wide th:nth-child(4) {
+    min-width: 240px;
+  }
+  .qblock {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    background:#fff;
+  }
+  .meta {
+    color: var(--muted);
+    margin: 0 0 10px;
+    font-size: 14px;
+  }
+  .note {
+    background: var(--warn);
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0;
+  }
+  .grid2 {
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 18px;
+  }
+  ul { margin-top: 8px; }
+  @media print {
+    body { background:white; }
+    .wrap { box-shadow:none; padding: 16px; }
+    .qblock { break-inside: avoid; }
+  }
+  @media (max-width: 900px) {
+    .cards, .grid2 { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
+  <h1>1141 公行大一「行政統計學」課程精進意見調查（校方分析 by ChatGPT）</h1>
+  <div class="subtitle">依據校方 HTML 匯出檔整理；產製時間：2026-06-20 15:21（Asia/Taipei）</div>
+  
+<div class="cards">
+  <div class="card"><div class="card-num">74.98</div><div class="card-label">校方總得分</div></div>
+  <div class="card"><div class="card-num">10 / 48</div><div class="card-label">期中有效填答（20.83%）</div></div>
+  <div class="card"><div class="card-num">34 / 48</div><div class="card-label">期末最高有效填答（70.83%）</div></div>
+  <div class="card"><div class="card-num">22</div><div class="card-label">文字回饋則數</div></div>
+</div>
 
-    <h1>1141 公行大一「行政統計學」課程精進意見調查</h1>
-    <div class="meta-info">統計基準：2026年6月20日 | 有效回收樣本：28 筆</div>
+  <h2>課程基本資訊</h2>
+  <table class=""><thead><tr><th>欄位</th><th>內容</th></tr></thead><tbody><tr><td>學期</td><td>國立政治大學 114學年度第1學期</td></tr><tr><td>開課系級</td><td>20611 公行一</td></tr><tr><td>科目名稱</td><td>206052001 行政統計學</td></tr><tr><td>任課教師</td><td>103688 蕭乃沂 先生</td></tr><tr><td>上課時間／教室</td><td>二234／綜南270312</td></tr><tr><td>學分數</td><td>3.0</td></tr><tr><td>選課人數</td><td>48人</td></tr><tr><td>總得分</td><td>74.98</td></tr></tbody></table>
+  
+<h2>分析口徑說明</h2>
+<ul>
+  <li>本報告以原 HTML 中之各題「人數」與「有效百分比」為基礎整理。</li>
+  <li>校方系統已有平均數者，直接保留校方平均數。</li>
+  <li>校方標示「本題只顯示填答情形不計分」者，若題型具明確順序，本報告另行加算或估算平均，並於「平均說明」欄標註。</li>
+  <li>同意／滿意題之加算方式為 A=10、B=8、C=6、D=4、E=2；時間與提升幅度題使用區間中點估算；「超過4小時」以 4.5 小時估算，「缺課5次以上」以 5 次估算。</li>
+  <li>複選題與是否修課題不計平均數，僅呈現次數與有效百分比。</li>
+</ul>
 
-    <h2>一、定量數據統計表</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>欄位名稱 / 評分指標</th>
-                <th>分數與項目</th>
-                <th>次數 (人)</th>
-                <th>百分比 (%)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="stat-header">
-                <td>1. 課業負擔</td>
-                <td>平均數：8.71</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr><td></td><td>5 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>6 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>7 分</td><td>3</td><td>10.7%</td></tr>
-            <tr><td></td><td>8 分</td><td>6</td><td>21.4%</td></tr>
-            <tr><td></td><td>9 分</td><td>6</td><td>21.4%</td></tr>
-            <tr style="font-weight: bold; color: #c53030;"><td></td><td>10 分 (極重)</td><td>11</td><td>39.3%</td></tr>
+  
+<h2>一、綜合判讀</h2>
+<div class="grid2">
+  <div>
+    <h3>教學成效共同題：較高平均</h3>
+    <table class=""><thead><tr><th>題目</th><th>平均數</th><th>有效人數</th></tr></thead><tbody><tr><td>教師教學態度認真負責，且授足所需授課之時數。</td><td>8.94</td><td>34</td></tr><tr><td>教師於本課程開始時會提供教學大綱，敘明課程需求與評分方式。</td><td>8.71</td><td>34</td></tr><tr><td>教師樂於鼓勵學生提問與討論，師生互動良好。</td><td>8.35</td><td>34</td></tr></tbody></table>
+  </div>
+  <div>
+    <h3>教學成效共同題：較低平均</h3>
+    <table class=""><thead><tr><th>題目</th><th>平均數</th><th>有效人數</th></tr></thead><tbody><tr><td>教師的教學方法能幫助您有效學習。</td><td>5.76</td><td>34</td></tr><tr><td>教師能依學生的學習狀況，選用適切的教材內容。</td><td>6.29</td><td>34</td></tr><tr><td>修習這門課程讓我覺得收穫良多。</td><td>6.59</td><td>34</td></tr></tbody></table>
+  </div>
+</div>
+<div class="grid2">
+  <div>
+    <h3>學生認為做得很好的項目（前四項）</h3>
+    <table class=""><thead><tr><th>項目</th><th>人數</th><th>有效百分比</th></tr></thead><tbody><tr><td>教學目標明確</td><td>27</td><td>87.10%</td></tr><tr><td>樂於解決學生學習問題</td><td>13</td><td>41.94%</td></tr><tr><td>教材取材適當</td><td>11</td><td>35.48%</td></tr><tr><td>鼓勵學生獨立思考</td><td>11</td><td>35.48%</td></tr></tbody></table>
+  </div>
+  <div>
+    <h3>學生希望更臻完善的項目（前四項）</h3>
+    <table class=""><thead><tr><th>項目</th><th>人數</th><th>有效百分比</th></tr></thead><tbody><tr><td>考試範圍能考慮學生負荷</td><td>29</td><td>93.55%</td></tr><tr><td>彈性調整教學內容</td><td>19</td><td>61.29%</td></tr><tr><td>準時上／下課</td><td>13</td><td>41.94%</td></tr><tr><td>調整作業報告份量</td><td>12</td><td>38.71%</td></tr></tbody></table>
+  </div>
+</div>
+<h3>關鍵能力提升估算排序</h3>
+<table class=""><thead><tr><th>能力</th><th>估算平均提升幅度</th><th>有效人數</th></tr></thead><tbody><tr><td>資訊科技</td><td>54.12%</td><td>34</td></tr><tr><td>問題解決</td><td>47.06%</td><td>34</td></tr><tr><td>自主學習</td><td>46.47%</td><td>34</td></tr><tr><td>跨領域</td><td>44.12%</td><td>34</td></tr><tr><td>社會參與</td><td>27.65%</td><td>34</td></tr><tr><td>國際移動</td><td>27.06%</td><td>34</td></tr><tr><td>人文關懷</td><td>22.94%</td><td>34</td></tr></tbody></table>
+<div class="note">
+  <b>重點摘要：</b>教學態度認真負責、課程大綱與師生互動是相對強項；相對需要優先處理的是教學方法對有效學習的協助、教材內容與學生學習狀況的適切性，以及學生對收穫感與學習興趣的落差。開放回饋與複選題共同指向：考試範圍與難度、課程節奏、作業負荷、以及公行大一學生數學基礎差異，是後續課程精進的主要切入點。
+</div>
 
-            <tr class="stat-header">
-                <td>2. 引發學習興趣</td>
-                <td>平均數：4.82</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr><td></td><td>1 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>2 分</td><td>3</td><td>10.7%</td></tr>
-            <tr><td></td><td>3 分</td><td>5</td><td>17.9%</td></tr>
-            <tr><td></td><td>4 分</td><td>4</td><td>14.3%</td></tr>
-            <tr><td></td><td>5 分</td><td>5</td><td>17.9%</td></tr>
-            <tr><td></td><td>6 分</td><td>3</td><td>10.7%</td></tr>
-            <tr><td></td><td>7 分</td><td>3</td><td>10.7%</td></tr>
-            <tr><td></td><td>8 分</td><td>3</td><td>10.7%</td></tr>
-            <tr><td></td><td>9 分</td><td>1</td><td>3.6%</td></tr>
-
-            <tr class="stat-header">
-                <td>3. 實際學習收穫</td>
-                <td>平均數：6.25</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr><td></td><td>2 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>3 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>4 分</td><td>2</td><td>7.1%</td></tr>
-            <tr><td></td><td>5 分</td><td>6</td><td>21.4%</td></tr>
-            <tr><td></td><td>6 分</td><td>5</td><td>17.9%</td></tr>
-            <tr style="font-weight: bold; color: #2f855a;"><td></td><td>7 分</td><td>8</td><td>28.6%</td></tr>
-            <tr><td></td><td>8 分</td><td>1</td><td>3.6%</td></tr>
-            <tr><td></td><td>9 分</td><td>2</td><td>7.1%</td></tr>
-            <tr><td></td><td>10 分 (極高)</td><td>2</td><td>7.1%</td></tr>
-        </tbody>
-    </table>
-
-    <h2>二、核心歸納與改善方針建議</h2>
+  <h2>二、量化欄位總表</h2>
+  <p class="meta">正向比例適用於滿意／同意類題項，係以 A+B 計算；普通比例為 C；負向比例為 D+E。</p>
+  <table class="wide"><thead><tr><th>序</th><th>部分</th><th>類別</th><th>題目</th><th>有效人數</th><th>無效人數</th><th>平均數</th><th>平均說明</th><th>正向比例</th><th>普通比例</th><th>負向比例</th></tr></thead><tbody><tr><td>1</td><td>期中</td><td>期中整體</td><td>整體而言，我對本課程的滿意程度：</td><td>10</td><td>0</td><td>6.60</td><td>本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</td><td>40.00%</td><td>40.00%</td><td>20.00%</td></tr><tr><td>2</td><td>期末</td><td>學習狀況</td><td>我在本課程的缺課情形（含請假及曠課）是：</td><td>33</td><td>1</td><td>1.18</td><td>本次估算（次；5次以上以5次估）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>3</td><td>期末</td><td>學習狀況</td><td>我每週平均花多少時間進行本課程的預習：</td><td>33</td><td>1</td><td>1.11</td><td>本次估算（小時；不到1小時=0.5，超過4小時=4.5）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4</td><td>期末</td><td>學習狀況</td><td>我每週平均花多少時間進行本課程的複習：</td><td>33</td><td>1</td><td>2.35</td><td>本次估算（小時；不到1小時=0.5，超過4小時=4.5）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5</td><td>期末</td><td>學習成果</td><td>我能清楚瞭解本課程的主要內涵與重點。</td><td>33</td><td>1</td><td>7.33</td><td>本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</td><td>63.64%</td><td>24.24%</td><td>12.12%</td></tr><tr><td>6</td><td>期末</td><td>學習成果</td><td>我知道如何運用本課程所學到的知識。</td><td>33</td><td>1</td><td>6.61</td><td>本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</td><td>36.36%</td><td>48.48%</td><td>15.15%</td></tr><tr><td>7</td><td>期末</td><td>學習成果</td><td>本課程提升了我對相關課程與知識的學習興趣。</td><td>33</td><td>1</td><td>6.06</td><td>本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</td><td>39.39%</td><td>30.30%</td><td>30.30%</td></tr><tr><td>8</td><td>期末</td><td>教學成效共同題</td><td>教師於本課程開始時會提供教學大綱，敘明課程需求與評分方式。</td><td>34</td><td>0</td><td>8.71</td><td>校方平均（0–10分）</td><td>85.29%</td><td>11.76%</td><td>2.94%</td></tr><tr><td>9</td><td>期末</td><td>教學成效共同題</td><td>教師對課程內容有良好的組織與規劃。</td><td>34</td><td>0</td><td>7.53</td><td>校方平均（0–10分）</td><td>55.88%</td><td>29.41%</td><td>14.71%</td></tr><tr><td>10</td><td>期末</td><td>教學成效共同題</td><td>教師能依學生的學習狀況，選用適切的教材內容。</td><td>34</td><td>0</td><td>6.29</td><td>校方平均（0–10分）</td><td>29.41%</td><td>47.06%</td><td>23.53%</td></tr><tr><td>11</td><td>期末</td><td>教學成效共同題</td><td>教師的教學方法能幫助您有效學習。</td><td>34</td><td>0</td><td>5.76</td><td>校方平均（0–10分）</td><td>29.41%</td><td>38.24%</td><td>32.35%</td></tr><tr><td>12</td><td>期末</td><td>教學成效共同題</td><td>教師能清楚且有組織、有系統的表達教學內容。</td><td>34</td><td>0</td><td>7.29</td><td>校方平均（0–10分）</td><td>64.71%</td><td>20.59%</td><td>14.71%</td></tr><tr><td>13</td><td>期末</td><td>教學成效共同題</td><td>我沒有修習本課程。</td><td>34</td><td>0</td><td>—</td><td>不適用</td><td>—</td><td>—</td><td>—</td></tr><tr><td>14</td><td>期末</td><td>教學成效共同題</td><td>教師評量方式公平且合理。</td><td>34</td><td>0</td><td>7.76</td><td>校方平均（0–10分）</td><td>73.53%</td><td>17.65%</td><td>8.82%</td></tr><tr><td>15</td><td>期末</td><td>教學成效共同題</td><td>教師充分備課，並掌握課程進度。</td><td>34</td><td>0</td><td>7.76</td><td>校方平均（0–10分）</td><td>67.65%</td><td>23.53%</td><td>8.82%</td></tr><tr><td>16</td><td>期末</td><td>教學成效共同題</td><td>教師樂於鼓勵學生提問與討論，師生互動良好。</td><td>34</td><td>0</td><td>8.35</td><td>校方平均（0–10分）</td><td>82.35%</td><td>14.71%</td><td>2.94%</td></tr><tr><td>17</td><td>期末</td><td>教學成效共同題</td><td>教師教學態度認真負責，且授足所需授課之時數。</td><td>34</td><td>0</td><td>8.94</td><td>校方平均（0–10分）</td><td>94.12%</td><td>5.88%</td><td>0.00%</td></tr><tr><td>18</td><td>期末</td><td>教學成效共同題</td><td>修習這門課程讓我覺得收穫良多。</td><td>34</td><td>0</td><td>6.59</td><td>校方平均（0–10分）</td><td>41.18%</td><td>38.24%</td><td>20.59%</td></tr><tr><td>19</td><td>期末</td><td>意見回饋</td><td>我覺得老師在教學上做得很好的項目為：（可複選）</td><td>31</td><td>3</td><td>—</td><td>不適用</td><td>—</td><td>—</td><td>—</td></tr><tr><td>20</td><td>期末</td><td>意見回饋</td><td>我希望老師在教學上可以更臻完善的項目為：（可複選）</td><td>31</td><td>3</td><td>—</td><td>不適用</td><td>—</td><td>—</td><td>—</td></tr><tr><td>21</td><td>期末</td><td>關鍵能力調查</td><td>資訊科技: 具備電腦操作、網路應用、軟體使用、資料處理和分析等方面能力。</td><td>34</td><td>0</td><td>54.12</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>22</td><td>期末</td><td>關鍵能力調查</td><td>人文關懷: 具備理解、尊重和關懷他人與環境時所表現出的能力；如同理心、溝通技巧、情感智慧和社交能力、多元敘事或自我表達等能力。</td><td>34</td><td>0</td><td>22.94</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>23</td><td>期末</td><td>關鍵能力調查</td><td>跨領域: 具備有跨學科知識及其運用的能力。</td><td>34</td><td>0</td><td>44.12</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>24</td><td>期末</td><td>關鍵能力調查</td><td>自主學習: 具備有自主探索、自我挑戰、主動學習或適合自己的學習策略能力。</td><td>34</td><td>0</td><td>46.47</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>25</td><td>期末</td><td>關鍵能力調查</td><td>國際移動: 具備有國際溝通、國際適應、及理解多元文化價值的能力。</td><td>34</td><td>0</td><td>27.06</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>26</td><td>期末</td><td>關鍵能力調查</td><td>社會參與: 具備有主動關注社會議題並以專業知識服務社會的能力。</td><td>34</td><td>0</td><td>27.65</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr><tr><td>27</td><td>期末</td><td>關鍵能力調查</td><td>問題解決: 具備有掌握問題並以系統思考與協調合作找出出路的能力。</td><td>34</td><td>0</td><td>47.06</td><td>本次估算（提升百分比區間中點）</td><td>—</td><td>—</td><td>—</td></tr></tbody></table>
+  <h2>三、量化欄位完整次數、百分比與平均數</h2>
+  
+    <section class="qblock">
+      <h4>期中｜期中整體｜1.整體而言，我對本課程的滿意程度：</h4>
+      <p class="meta">有效人數：10；無效人數：0；平均數：<b>6.60</b>｜本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常滿意</td><td>2</td><td>20.00%</td><td>20.00%</td></tr><tr><td>B.滿意</td><td>2</td><td>20.00%</td><td>40.00%</td></tr><tr><td>C.普通</td><td>4</td><td>40.00%</td><td>80.00%</td></tr><tr><td>D.不滿意</td><td>1</td><td>10.00%</td><td>90.00%</td></tr><tr><td>E.非常不滿意</td><td>1</td><td>10.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
     
-    <div class="card">
-        <h3>💡 痛點與亮點交叉分析</h3>
-        <ul>
-            <li><strong>課業負擔（8.71分）與學習興趣（4.82分）的拉鋸：</strong> 數據與質性回覆強烈對應，高達 82% 的學生認為課業負擔極重（8-10分），並直指進度太趕、公式太多，導致近半數學生（46.4%）的學習興趣受到壓抑（1-3分）。</li>
-            <li><strong>扎實的收穫度（6.25分）：</strong> 欣慰的是，儘管過程極其痛苦，過半數的學生（54.1%）仍給予了 7 分以上的實質收穫肯定，且無人給予 1 分。顯示課程在設計、測驗、助解和軟體操作上的「扎實度」深受學生認可。</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>🔧 具體優化精進方針</h3>
-        <ul>
-            <li><strong>調整課程體量與放慢語速：</strong> 考慮到社會科學院系所學生的數理背景，建議在 16 週的架構下適度精簡繁複的數學理論公式推導，改以更多的「應用個案與實例解釋」為主，並適當放慢上課節奏。</li>
-            <li><strong>加強考試引導與平時練習關聯：</strong> 多位同學反映「考題用意模糊、題型與平時練習有落差」。建議在考前提供具代表性的綜合練習題或歷屆試題解析，並在英文試卷中加強關鍵名詞的中文轉譯，避免因語意理解落差干擾基本觀念的建立。</li>
-            <li><strong>優化平台與作業釋出時間：</strong> 對於預習與複習作業，建議統一提早於週間釋出（避免週五或週六才收到通知），並將學期報告繳交空間從留言區移至正規的「作業繳交區」，以改善資訊混亂、不易更新的問題。</li>
-        </ul>
-    </div>
-
+    <section class="qblock">
+      <h4>期末｜學習狀況｜1.我在本課程的缺課情形（含請假及曠課）是：</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>1.18</b>｜本次估算（次；5次以上以5次估）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.從未缺課</td><td>18</td><td>54.55%</td><td>55.00%</td></tr><tr><td>B.缺課1-2次</td><td>9</td><td>27.27%</td><td>83.00%</td></tr><tr><td>C.缺課3-4次</td><td>3</td><td>9.09%</td><td>93.00%</td></tr><tr><td>D.缺課5次（含）以上</td><td>3</td><td>9.09%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜學習狀況｜2.我每週平均花多少時間進行本課程的預習：</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>1.11</b>｜本次估算（小時；不到1小時=0.5，超過4小時=4.5）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.不到1小時</td><td>14</td><td>42.42%</td><td>43.00%</td></tr><tr><td>B.1小時</td><td>12</td><td>36.36%</td><td>80.00%</td></tr><tr><td>C.2小時</td><td>5</td><td>15.15%</td><td>96.00%</td></tr><tr><td>D.3小時</td><td>1</td><td>3.03%</td><td>100.00%</td></tr><tr><td>E.超過4小時</td><td>1</td><td>3.03%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜學習狀況｜3.我每週平均花多少時間進行本課程的複習：</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>2.35</b>｜本次估算（小時；不到1小時=0.5，超過4小時=4.5）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.不到1小時</td><td>5</td><td>15.15%</td><td>16.00%</td></tr><tr><td>B.1小時</td><td>5</td><td>15.15%</td><td>32.00%</td></tr><tr><td>C.2小時</td><td>8</td><td>24.24%</td><td>57.00%</td></tr><tr><td>D.3小時</td><td>9</td><td>27.27%</td><td>85.00%</td></tr><tr><td>E.超過4小時</td><td>6</td><td>18.18%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜學習成果｜1.我能清楚瞭解本課程的主要內涵與重點。</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>7.33</b>｜本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>5</td><td>15.15%</td><td>16.00%</td></tr><tr><td>B.同意</td><td>16</td><td>48.48%</td><td>65.00%</td></tr><tr><td>C.普通</td><td>8</td><td>24.24%</td><td>90.00%</td></tr><tr><td>D.不同意</td><td>4</td><td>12.12%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜學習成果｜2.我知道如何運用本課程所學到的知識。</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>6.61</b>｜本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>3</td><td>9.09%</td><td>10.00%</td></tr><tr><td>B.同意</td><td>9</td><td>27.27%</td><td>38.00%</td></tr><tr><td>C.普通</td><td>16</td><td>48.48%</td><td>87.00%</td></tr><tr><td>D.不同意</td><td>5</td><td>15.15%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜學習成果｜3.本課程提升了我對相關課程與知識的學習興趣。</h4>
+      <p class="meta">有效人數：33；無效人數：1；平均數：<b>6.06</b>｜本次加算（0–10分；A=10、B=8、C=6、D=4、E=2）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>2</td><td>6.06%</td><td>7.00%</td></tr><tr><td>B.同意</td><td>11</td><td>33.33%</td><td>41.00%</td></tr><tr><td>C.普通</td><td>10</td><td>30.30%</td><td>71.00%</td></tr><tr><td>D.不同意</td><td>6</td><td>18.18%</td><td>90.00%</td></tr><tr><td>E.非常不同意</td><td>4</td><td>12.12%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜1.教師於本課程開始時會提供教學大綱，敘明課程需求與評分方式。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>8.71</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>18</td><td>52.94%</td><td>53.00%</td></tr><tr><td>B.同意</td><td>11</td><td>32.35%</td><td>86.00%</td></tr><tr><td>C.普通</td><td>4</td><td>11.76%</td><td>98.00%</td></tr><tr><td>D.不同意</td><td>1</td><td>2.94%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜2.教師對課程內容有良好的組織與規劃。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>7.53</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>12</td><td>35.29%</td><td>36.00%</td></tr><tr><td>B.同意</td><td>7</td><td>20.59%</td><td>57.00%</td></tr><tr><td>C.普通</td><td>10</td><td>29.41%</td><td>87.00%</td></tr><tr><td>D.不同意</td><td>5</td><td>14.71%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜3.教師能依學生的學習狀況，選用適切的教材內容。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>6.29</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>7</td><td>20.59%</td><td>21.00%</td></tr><tr><td>B.同意</td><td>3</td><td>8.82%</td><td>30.00%</td></tr><tr><td>C.普通</td><td>16</td><td>47.06%</td><td>78.00%</td></tr><tr><td>D.不同意</td><td>4</td><td>11.76%</td><td>90.00%</td></tr><tr><td>E.非常不同意</td><td>4</td><td>11.76%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜4.教師的教學方法能幫助您有效學習。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>5.76</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>3</td><td>8.82%</td><td>9.00%</td></tr><tr><td>B.同意</td><td>7</td><td>20.59%</td><td>30.00%</td></tr><tr><td>C.普通</td><td>13</td><td>38.24%</td><td>69.00%</td></tr><tr><td>D.不同意</td><td>5</td><td>14.71%</td><td>84.00%</td></tr><tr><td>E.非常不同意</td><td>6</td><td>17.65%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜5.教師能清楚且有組織、有系統的表達教學內容。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>7.29</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>5</td><td>14.71%</td><td>15.00%</td></tr><tr><td>B.同意</td><td>17</td><td>50.00%</td><td>65.00%</td></tr><tr><td>C.普通</td><td>7</td><td>20.59%</td><td>86.00%</td></tr><tr><td>D.不同意</td><td>5</td><td>14.71%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜6.我沒有修習本課程。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>不適用</b>｜不適用</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.是</td><td>0</td><td>0.00%</td><td>0.00%</td></tr><tr><td>B.否</td><td>34</td><td>100.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜7.教師評量方式公平且合理。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>7.76</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>9</td><td>26.47%</td><td>27.00%</td></tr><tr><td>B.同意</td><td>16</td><td>47.06%</td><td>75.00%</td></tr><tr><td>C.普通</td><td>6</td><td>17.65%</td><td>93.00%</td></tr><tr><td>D.不同意</td><td>2</td><td>5.88%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>1</td><td>2.94%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜8.教師充分備課，並掌握課程進度。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>7.76</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>10</td><td>29.41%</td><td>30.00%</td></tr><tr><td>B.同意</td><td>13</td><td>38.24%</td><td>69.00%</td></tr><tr><td>C.普通</td><td>8</td><td>23.53%</td><td>93.00%</td></tr><tr><td>D.不同意</td><td>3</td><td>8.82%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜9.教師樂於鼓勵學生提問與討論，師生互動良好。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>8.35</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>13</td><td>38.24%</td><td>39.00%</td></tr><tr><td>B.同意</td><td>15</td><td>44.12%</td><td>84.00%</td></tr><tr><td>C.普通</td><td>5</td><td>14.71%</td><td>100.00%</td></tr><tr><td>D.不同意</td><td>1</td><td>2.94%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜10.教師教學態度認真負責，且授足所需授課之時數。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>8.94</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>18</td><td>52.94%</td><td>53.00%</td></tr><tr><td>B.同意</td><td>14</td><td>41.18%</td><td>95.00%</td></tr><tr><td>C.普通</td><td>2</td><td>5.88%</td><td>100.00%</td></tr><tr><td>D.不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>E.非常不同意</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜教學成效共同題｜11.修習這門課程讓我覺得收穫良多。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>6.59</b>｜校方平均（0–10分）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>A.非常同意</td><td>6</td><td>17.65%</td><td>18.00%</td></tr><tr><td>B.同意</td><td>8</td><td>23.53%</td><td>42.00%</td></tr><tr><td>C.普通</td><td>13</td><td>38.24%</td><td>81.00%</td></tr><tr><td>D.不同意</td><td>4</td><td>11.76%</td><td>93.00%</td></tr><tr><td>E.非常不同意</td><td>3</td><td>8.82%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜意見回饋｜1.我覺得老師在教學上做得很好的項目為：（可複選）</h4>
+      <p class="meta">有效人數：31；無效人數：3；平均數：<b>不適用</b>｜不適用</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>教學目標明確</td><td>27</td><td>87.10%</td><td>87.00%</td></tr><tr><td>引發學生學習動機</td><td>5</td><td>16.13%</td><td>100.00%</td></tr><tr><td>增強學生信心</td><td>1</td><td>3.23%</td><td>100.00%</td></tr><tr><td>尊重學生意見</td><td>9</td><td>29.03%</td><td>100.00%</td></tr><tr><td>教材適時更新</td><td>8</td><td>25.81%</td><td>100.00%</td></tr><tr><td>教材取材適當</td><td>11</td><td>35.48%</td><td>100.00%</td></tr><tr><td>樂於解決學生學習問題</td><td>13</td><td>41.94%</td><td>100.00%</td></tr><tr><td>鼓勵學生獨立思考</td><td>11</td><td>35.48%</td><td>100.00%</td></tr><tr><td>其他：</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜意見回饋｜2.我希望老師在教學上可以更臻完善的項目為：（可複選）</h4>
+      <p class="meta">有效人數：31；無效人數：3；平均數：<b>不適用</b>｜不適用</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>準時上／下課</td><td>13</td><td>41.94%</td><td>42.00%</td></tr><tr><td>減少調課／缺課</td><td>0</td><td>0.00%</td><td>42.00%</td></tr><tr><td>彈性調整教學內容</td><td>19</td><td>61.29%</td><td>100.00%</td></tr><tr><td>立論力求持平</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>避免性別歧視</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>避免族群偏見</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>增加課程內容深度</td><td>1</td><td>3.23%</td><td>100.00%</td></tr><tr><td>增加課後延伸</td><td>1</td><td>3.23%</td><td>100.00%</td></tr><tr><td>調整作業報告份量</td><td>12</td><td>38.71%</td><td>100.00%</td></tr><tr><td>能加大上課音量</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>考試範圍能考慮學生負荷</td><td>29</td><td>93.55%</td><td>100.00%</td></tr><tr><td>講課避免偏離主題</td><td>0</td><td>0.00%</td><td>100.00%</td></tr><tr><td>其他：</td><td>3</td><td>9.68%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜1.資訊科技: 具備電腦操作、網路應用、軟體使用、資料處理和分析等方面能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>54.12</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>3</td><td>8.82%</td><td>9.00%</td></tr><tr><td>提升 20%~40%</td><td>10</td><td>29.41%</td><td>39.00%</td></tr><tr><td>提升 40%~60%</td><td>5</td><td>14.71%</td><td>54.00%</td></tr><tr><td>提升 60%~80%</td><td>9</td><td>26.47%</td><td>81.00%</td></tr><tr><td>提升 80%~100%</td><td>7</td><td>20.59%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜2.人文關懷: 具備理解、尊重和關懷他人與環境時所表現出的能力；如同理心、溝通技巧、情感智慧和社交能力、多元敘事或自我表達等能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>22.94</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>19</td><td>55.88%</td><td>56.00%</td></tr><tr><td>提升 20%~40%</td><td>9</td><td>26.47%</td><td>83.00%</td></tr><tr><td>提升 40%~60%</td><td>5</td><td>14.71%</td><td>98.00%</td></tr><tr><td>提升 60%~80%</td><td>1</td><td>2.94%</td><td>100.00%</td></tr><tr><td>提升 80%~100%</td><td>0</td><td>0.00%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜3.跨領域: 具備有跨學科知識及其運用的能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>44.12</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>8</td><td>23.53%</td><td>24.00%</td></tr><tr><td>提升 20%~40%</td><td>7</td><td>20.59%</td><td>45.00%</td></tr><tr><td>提升 40%~60%</td><td>10</td><td>29.41%</td><td>75.00%</td></tr><tr><td>提升 60%~80%</td><td>5</td><td>14.71%</td><td>90.00%</td></tr><tr><td>提升 80%~100%</td><td>4</td><td>11.76%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜4.自主學習: 具備有自主探索、自我挑戰、主動學習或適合自己的學習策略能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>46.47</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>9</td><td>26.47%</td><td>27.00%</td></tr><tr><td>提升 20%~40%</td><td>5</td><td>14.71%</td><td>42.00%</td></tr><tr><td>提升 40%~60%</td><td>7</td><td>20.59%</td><td>63.00%</td></tr><tr><td>提升 60%~80%</td><td>9</td><td>26.47%</td><td>90.00%</td></tr><tr><td>提升 80%~100%</td><td>4</td><td>11.76%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜5.國際移動: 具備有國際溝通、國際適應、及理解多元文化價值的能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>27.06</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>18</td><td>52.94%</td><td>53.00%</td></tr><tr><td>提升 20%~40%</td><td>8</td><td>23.53%</td><td>77.00%</td></tr><tr><td>提升 40%~60%</td><td>4</td><td>11.76%</td><td>89.00%</td></tr><tr><td>提升 60%~80%</td><td>3</td><td>8.82%</td><td>98.00%</td></tr><tr><td>提升 80%~100%</td><td>1</td><td>2.94%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜6.社會參與: 具備有主動關注社會議題並以專業知識服務社會的能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>27.65</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>19</td><td>55.88%</td><td>56.00%</td></tr><tr><td>提升 20%~40%</td><td>6</td><td>17.65%</td><td>74.00%</td></tr><tr><td>提升 40%~60%</td><td>4</td><td>11.76%</td><td>86.00%</td></tr><tr><td>提升 60%~80%</td><td>4</td><td>11.76%</td><td>98.00%</td></tr><tr><td>提升 80%~100%</td><td>1</td><td>2.94%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜關鍵能力調查｜7.問題解決: 具備有掌握問題並以系統思考與協調合作找出出路的能力。</h4>
+      <p class="meta">有效人數：34；無效人數：0；平均數：<b>47.06</b>｜本次估算（提升百分比區間中點）</p>
+      <table class=""><thead><tr><th>選項</th><th>人數</th><th>有效百分比</th><th>累積百分比</th></tr></thead><tbody><tr><td>提升 0%~20%</td><td>7</td><td>20.59%</td><td>21.00%</td></tr><tr><td>提升 20%~40%</td><td>10</td><td>29.41%</td><td>51.00%</td></tr><tr><td>提升 40%~60%</td><td>3</td><td>8.82%</td><td>60.00%</td></tr><tr><td>提升 60%~80%</td><td>9</td><td>26.47%</td><td>87.00%</td></tr><tr><td>提升 80%~100%</td><td>5</td><td>14.71%</td><td>100.00%</td></tr></tbody></table>
+    </section>
+    
+  <h2>四、文字欄位歸納摘要</h2>
+  
+    <section class="qblock">
+      <h4>期中｜優點或建議文字回饋</h4>
+      <p class="meta">文字回饋則數：7。同一則回饋可被歸入多個主題，因此提及則數加總會高於回饋則數。</p>
+      <p>期中回饋高度集中於「進度快、內容密度高、吸收困難」。學生多數感受到課程節奏與作業／小測安排帶來負荷；同時也有回饋肯定教師願意說明、回應問題與關心學生理解狀況。整體而言，期中意見呈現「教師投入被看見，但學習節奏與負荷需調整」的樣態。</p>
+      <table class="wide"><thead><tr><th>歸納主題</th><th>提及則數</th><th>占該文字欄位比例</th><th>對應回饋序號</th></tr></thead><tbody><tr><td>課程進度與講課速度偏快</td><td>4</td><td>57.14%</td><td>1、3、4、5</td></tr><tr><td>單堂內容量過多，吸收負荷大</td><td>6</td><td>85.71%</td><td>1、3、4、5、6、7</td></tr><tr><td>課後作業／小測與教學進度落差</td><td>3</td><td>42.86%</td><td>3、4、5</td></tr><tr><td>拖堂或下課時間受到影響</td><td>2</td><td>28.57%</td><td>1、5</td></tr><tr><td>教師態度與回應被肯定</td><td>2</td><td>28.57%</td><td>2、3</td></tr><tr><td>建議簡化範圍、調整深度與排程</td><td>2</td><td>28.57%</td><td>3、6</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜更臻完善項目之其他意見</h4>
+      <p class="meta">文字回饋則數：3。同一則回饋可被歸入多個主題，因此提及則數加總會高於回饋則數。</p>
+      <p>此題其他意見雖僅三則，但語氣明確且集中，主要指向授課深度與廣度、考試難度、學生基礎落差，以及學習壓力。回饋中同時承認教師與助教投入，但認為課程安排需更貼近公行大一學生的先備程度。</p>
+      <table class="wide"><thead><tr><th>歸納主題</th><th>提及則數</th><th>占該文字欄位比例</th><th>對應回饋序號</th></tr></thead><tbody><tr><td>授課深度／廣度需更貼近學生基礎</td><td>2</td><td>66.67%</td><td>1、2</td></tr><tr><td>考試難度與範圍需調整</td><td>2</td><td>66.67%</td><td>1、3</td></tr><tr><td>學習壓力與恐慌感明顯</td><td>1</td><td>33.33%</td><td>1</td></tr><tr><td>教師與助教認真被肯定</td><td>1</td><td>33.33%</td><td>1</td></tr></tbody></table>
+    </section>
+    
+    <section class="qblock">
+      <h4>期末｜本課程優點或建議文字回饋</h4>
+      <p class="meta">文字回饋則數：12。同一則回饋可被歸入多個主題，因此提及則數加總會高於回饋則數。</p>
+      <p>期末開放回饋延續期中意見，最主要的訊息是考試範圍與難度、課程進度、作業負擔及數學基礎落差。正向意見則集中於教師認真、內容紮實與可學到東西。學生期待課程能保留紮實內容，但透過更分層、更多步驟示範與更明確的公式／實作說明，降低入門門檻。</p>
+      <table class="wide"><thead><tr><th>歸納主題</th><th>提及則數</th><th>占該文字欄位比例</th><th>對應回饋序號</th></tr></thead><tbody><tr><td>考試範圍或難度過高</td><td>7</td><td>58.33%</td><td>1、2、4、7、8、11、12</td></tr><tr><td>進度或講課速度偏快</td><td>3</td><td>25.00%</td><td>5、7、12</td></tr><tr><td>作業／小考／課後負擔偏重</td><td>6</td><td>50.00%</td><td>1、3、4、6、7、11</td></tr><tr><td>需更貼近公行大一與高中數學基礎</td><td>3</td><td>25.00%</td><td>6、7、10</td></tr><tr><td>期待更多實作、公式或推導說明</td><td>1</td><td>8.33%</td><td>11</td></tr><tr><td>課程內容紮實、教師認真或可學到東西</td><td>4</td><td>33.33%</td><td>3、5、6、9</td></tr><tr><td>準時上下課或時間掌握</td><td>2</td><td>16.67%</td><td>1、11</td></tr><tr><td>課程架構與系統化需強化</td><td>2</td><td>16.67%</td><td>4、12</td></tr></tbody></table>
+    </section>
+    
+</div>
 </body>
 </html>
